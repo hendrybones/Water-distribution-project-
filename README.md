@@ -7,7 +7,4 @@ This project explores **Maji Ndogo’s water services database**. Using SQL, we 
 ```sql
 USE md_water_services;
 SHOW TABLES;
---- 
-## Employee Data Cleaning
-``` Generate employee emails
-We create a new column and populate emails in the format: firstname.lastname@ndogowater.gov.
+
