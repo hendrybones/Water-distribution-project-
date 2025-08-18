@@ -52,3 +52,20 @@ FROM visits
 GROUP BY assigned_employee_id
 ORDER BY Number_of_visits DESC
 LIMIT 3;
+
+```
+## Location Analysis
+```sql
+SELECT town_name, COUNT(*) AS number_of_locations
+FROM location
+GROUP BY town_name
+ORDER BY number_of_locations DESC;
+```
+## Records per province
+```sql
+SELECT province_name, COUNT(*) AS number_of_locations
+FROM location
+GROUP BY province_name
+ORDER BY number_of_locations;
+```
+Insight: Water sources are widely distributed across rural communities, with each province fairly well represented.
