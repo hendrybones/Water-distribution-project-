@@ -8,10 +8,13 @@ This project explores **Maji Ndogo’s water services database**. Using SQL, we 
 USE md_water_services;
 SHOW TABLES;.
 
----
-## Employee Data Cleaning
-1. Generate employee emails
-We create a new column and populate emails in the format: firstname.lastname@ndogowater.gov.
+
+** Data cleaning **
+## Employee Data Cleaning  
+
+### 1. Generate Employee Emails  
+We create a new column and populate emails in the format: `firstname.lastname@ndogowater.gov`.  
+
 ```sql
 ALTER TABLE employee ADD COLUMN email VARCHAR(255);
 
@@ -24,3 +27,11 @@ WHERE assigned_employee_id >= 0;
 
 SELECT * FROM employee;
 
+
+`---
+
+🔑 Key to keeping sections **separated** in README:  
+- Always **close the first SQL block** with triple backticks before starting a new section.  
+- Use `---` (horizontal rule) or at least a blank line before the next `##` heading.  
+
+👉 Want me to rewrite your entire README with **each section separated like this** (Database Setup → Employee → Location → Water Sources → Queues)? That way you can paste once and it’s all formatted perfectly.
