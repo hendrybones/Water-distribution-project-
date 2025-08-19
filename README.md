@@ -70,4 +70,11 @@ ORDER BY number_of_locations;
 ```
 Insight: Water sources are widely distributed across rural communities, with each province fairly well represented.
 
-```##Records by Location Type
+```
+```
+## Records by Location Type
+```sql
+SELECT location_type, COUNT(*) AS Number_of_Records
+FROM location
+GROUP BY location_type;
+
