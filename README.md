@@ -120,7 +120,6 @@ GROUP BY type_of_water_source
 ORDER BY total_people_served DESC;
 ```
 Insight: Around 31% of households have taps at home, but 45% of these are broken due to infrastructure issues. Wells serve ~18% of the population, but only 28% are clean.
-
 ```
 ```
 ## Ranking Sources by Usage
@@ -143,6 +142,28 @@ SELECT
     TIMESTAMPDIFF(DAY, MIN(time_of_record), MAX(time_of_record)) AS survey_duration_days
 FROM visits;
 
+```
+## Average Queue Time (Overall)
+```sql
+SELECT ROUND(AVG(time_in_queue), 2) AS average_queue_time
+FROM visits;
+```
+##Average Queue Time by Day of the Week
+```sql
+SELECT DAYNAME(time_of_record) AS day_of_week,
+       AVG(time_in_queue) AS average_queue_time
+FROM visits
+GROUP BY day_of_week;
+```
+Insight: Queue times vary significantly by day, with weekends showing the longest waiting times.
+```
+```
+Key Insights
+
+Employees’ data was cleaned and standardized for communication.
+Water sources are widespread, but infrastructure reliability is a major issue.
+Taps serve the most people but are often broken, making them a high-priority fix.
+Queue analysis shows demand peaks on certain days, guiding targeted interventions.
 
 
 
