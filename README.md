@@ -70,5 +70,4 @@ ORDER BY number_of_locations;
 ```
 Insight: Water sources are widely distributed across rural communities, with each province fairly well represented.
 
-```
-## Records by Location Type
+```##Records by Location Type
