@@ -78,3 +78,72 @@ SELECT location_type, COUNT(*) AS Number_of_Records
 FROM location
 GROUP BY location_type;
 
+```
+# Water Sources Analysis
+### Total People Surveyed
+```sql
+SELECT SUM(number_of_people_served) AS people_surveyed
+FROM water_source;
+
+```
+## Count Sources by Type
+```sql
+SELECT type_of_water_source, COUNT(*) AS number_of_sources
+FROM water_source
+GROUP BY type_of_water_source;
+
+```
+## Average People per Source Type
+```sql
+SELECT type_of_water_source, ROUND(AVG(number_of_people_served),0) AS avg_people_served
+FROM water_source
+GROUP BY type_of_water_source;
+```
+## Total People Served by Source Type
+```sql
+SELECT type_of_water_source, SUM(number_of_people_served) AS total_people_served
+FROM water_source
+GROUP BY type_of_water_source
+ORDER BY total_people_served DESC;
+
+```
+## Percentage of Population Served by Source
+```sql
+SELECT type_of_water_source,
+       SUM(number_of_people_served) AS total_people_served,
+       ROUND(
+         SUM(number_of_people_served) / 
+         (SELECT SUM(number_of_people_served) FROM water_source) * 100, 2
+       ) AS percentage_served
+FROM water_source
+GROUP BY type_of_water_source
+ORDER BY total_people_served DESC;
+```
+Insight: Around 31% of households have taps at home, but 45% of these are broken due to infrastructure issues. Wells serve ~18% of the population, but only 28% are clean.
+
+```
+```
+## Ranking Sources by Usage
+```sql
+SELECT type_of_water_source,
+       SUM(number_of_people_served) AS total_people_served,
+       RANK() OVER (ORDER BY SUM(number_of_people_served) DESC) AS source_rank
+FROM water_source
+GROUP BY type_of_water_source;
+```
+Shared taps and wells should be prioritized first, as they serve the largest number of people.
+```
+```
+# Queue Analysis
+## Survey Duration
+```sql
+SELECT 
+    MIN(time_of_record) AS survey_start,
+    MAX(time_of_record) AS survey_end,
+    TIMESTAMPDIFF(DAY, MIN(time_of_record), MAX(time_of_record)) AS survey_duration_days
+FROM visits;
+
+
+
+
+
