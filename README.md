@@ -156,7 +156,7 @@ FROM visits
 GROUP BY day_of_week;
 ```
 Insight: Queue times vary significantly by day, with weekends showing the longest waiting times.
-```
+`
 Key Insights
 
 Employees’ data was cleaned and standardized for communication.
